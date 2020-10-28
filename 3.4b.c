@@ -16,7 +16,7 @@ int main(void)
 {
 	int fd[2];
 	pipe(fd);
-	pid_t ppid = fork();
+	pid_t pid = fork();
 
 	if (pid>0)
 	{
@@ -25,11 +25,11 @@ int main(void)
 		dup(fd[0]);
 
 		int secretNumber;
-		size_t readBytes = read(fd[0], &secretNumber, sizeof(secretNUmber));
+		size_t readBytes = read(fd[0], &secretNumber, sizeof(secretNumber));
 
 		printf("Waiting for PIN...\n");
 		wait(NULL);
-		printf("Bytes read: %ld\n", readbytes);
+		printf("Bytes read: %ld\n", readBytes);
 		printf("PIN: %d\n", secretNumber);
 	}
 
